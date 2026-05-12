@@ -2,11 +2,14 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-int *getConcatenation(int* nums, int numsSize, int* returnSize) {
-	int* ans = (int*)malloc(sizeof(int) * 2 * numsSize);
-	for (int i = 0; i < 2 * numsSize; i++) {
-		ans[i] = nums[i % numsSize];
-	}
-	*returnSize = 2 * numsSize;
-	return ans;
+int* getConcatenation(int* nums, int numsSize, int* returnSize) {
+    *returnSize = numsSize * 2;
+    int* ans = (int*)malloc(*returnSize * sizeof(int));
+
+    for (int i = 0; i < numsSize; i++) {
+        ans[i] = nums[i];
+        ans[i + numsSize] = nums[i];
+    }
+
+    return ans;
 }
